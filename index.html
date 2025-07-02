@@ -1,48 +1,9 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robinson Crusoe - Chapter 1</title>
+    <title>15 MCQs and 15 True/False with Urdu Meanings: Robinson's Sea Adventure</title>
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
@@ -55,7 +16,7 @@
         h1 {
             text-align: center;
             color: #0d47a1;
-            font-size: 2em;
+            font-size: 2.2em;
             margin-bottom: 20px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
         }
@@ -134,248 +95,248 @@
     </style>
 </head>
 <body>
-    <h1>Robinson Crusoe - Chapter 1</h1>
+    <h1>15 MCQs and 15 True/False with Urdu Meanings: Robinson's Sea Adventure</h1>
     <form id="quizForm">
         <h2>Multiple Choice Questions (1–15)</h2>
         <div class="question">
-            <p>1. Where was the narrator born?</p>
+            <p>1. What does Robinson see out the window during the storm (طوفان)?</p>
             <div class="options">
-                <label><input type="radio" name="q1" value="a"> Germany</label>
-                <label><input type="radio" name="q1" value="b"> England</label>
-                <label><input type="radio" name="q1" value="c"> France</label>
-                <label><input type="radio" name="q1" value="d"> Spain</label>
+                <label><input type="radio" name="q1" value="a"> Big waves (موج)</label>
+                <label><input type="radio" name="q1" value="b"> A clear sky</label>
+                <label><input type="radio" name="q1" value="c"> A lighthouse</label>
+                <label><input type="radio" name="q1" value="d"> A calm sea</label>
             </div>
         </div>
         <div class="question">
-            <p>2. What was the narrator's father's nationality?</p>
+            <p>2. How does Robinson describe the other ships (جہاز) during the storm (طوفان)?</p>
             <div class="options">
-                <label><input type="radio" name="q2" value="a"> English</label>
-                <label><input type="radio" name="q2" value="b"> German</label>
-                <label><input type="radio" name="q2" value="c"> French</label>
-                <label><input type="radio" name="q2" value="d"> Italian</label>
+                <label><input type="radio" name="q2" value="a"> Like mountains</label>
+                <label><input type="radio" name="q2" value="b"> Like toys</label>
+                <label><input type="radio" name="q2" value="c"> Like giants</label>
+                <label><input type="radio" name="q2" value="d"> Like islands</label>
             </div>
         </div>
         <div class="question">
-            <p>3. What was the narrator's dream?</p>
+            <p>3. What problem is discovered on the ship (جہاز) during the storm (طوفان)?</p>
             <div class="options">
-                <label><input type="radio" name="q3" value="a"> To become a businessman</label>
-                <label><input type="radio" name="q3" value="b"> To travel by sea</label>
-                <label><input type="radio" name="q3" value="c"> To stay in England</label>
-                <label><input type="radio" name="q3" value="d"> To be a teacher</label>
+                <label><input type="radio" name="q3" value="a"> A broken sail</label>
+                <label><input type="radio" name="q3" value="b"> A hole in the ship</label>
+                <label><input type="radio" name="q3" value="c"> A missing captain</label>
+                <label><input type="radio" name="q3" value="d"> A fire on board</label>
             </div>
         </div>
         <div class="question">
-            <p>4. Why was the narrator's father unhappy?</p>
+            <p>4. What does the captain’s signal gun indicate?</p>
             <div class="options">
-                <label><input type="radio" name="q4" value="a"> He didn’t like the narrator</label>
-                <label><input type="radio" name="q4" value="b"> He didn’t want the narrator to travel by sea</label>
-                <label><input type="radio" name="q4" value="c"> He was poor</label>
-                <label><input type="radio" name="q4" value="d"> He was sick</label>
+                <label><input type="radio" name="q4" value="a"> The storm is over</label>
+                <label><input type="radio" name="q4" value="b"> A big problem (مسئلہ)</label>
+                <label><input type="radio" name="q4" value="c"> They reached land</label>
+                <label><input type="radio" name="q4" value="d"> A celebration</label>
             </div>
         </div>
         <div class="question">
-            <p>5. What did the narrator's father say about travelling by sea?</p>
+            <p>5. What do the men do to address the water in the ship (جہاز)?</p>
             <div class="options">
-                <label><input type="radio" name="q5" value="a"> It was exciting</label>
-                <label><input type="radio" name="q5" value="b"> It was dangerous</label>
-                <label><input type="radio" name="q5" value="c"> It was boring</label>
-                <label><input type="radio" name="q5" value="d"> It was easy</label>
+                <label><input type="radio" name="q5" value="a"> Swim to shore</label>
+                <label><input type="radio" name="q5" value="b"> Pump the water out</label>
+                <label><input type="radio" name="q5" value="c"> Fix the sail</label>
+                <label><input type="radio" name="q5" value="d"> Abandon the ship</label>
             </div>
         </div>
         <div class="question">
-            <p>6. How old was the narrator when his father spoke to him about his dream?</p>
+            <p>6. How are Robinson and the crew rescued?</p>
             <div class="options">
-                <label><input type="radio" name="q6" value="a"> 16</label>
-                <label><input type="radio" name="q6" value="b"> 18</label>
-                <label><input type="radio" name="q6" value="c"> 20</label>
-                <label><input type="radio" name="q6" value="d"> 22</label>
+                <label><input type="radio" name="q6" value="a"> By swimming to shore</label>
+                <label><input type="radio" name="q6" value="b"> By a small boat (چھوٹی کشتی)</label>
+                <label><input type="radio" name="q6" value="c"> By repairing the ship</label>
+                <label><input type="radio" name="q6" value="d"> By a navy ship</label>
             </div>
         </div>
         <div class="question">
-            <p>7. Who did the narrator ask for help to convince his father?</p>
+            <p>7. What happens to the ship (جہاز) after the crew is rescued?</p>
             <div class="options">
-                <label><input type="radio" name="q7" value="a"> His brother</label>
-                <label><input type="radio" name="q7" value="b"> His sister</label>
-                <label><input type="radio" name="q7" value="c"> His mother</label>
-                <label><input type="radio" name="q7" value="d"> His friend</label>
+                <label><input type="radio" name="q7" value="a"> It is repaired</label>
+                <label><input type="radio" name="q7" value="b"> It sinks</label>
+                <label><input type="radio" name="q7" value="c"> It sails away</label>
+                <label><input type="radio" name="q7" value="d"> It reaches London</label>
             </div>
         </div>
         <div class="question">
-            <p>8. What did the narrator's mother think about travelling by sea?</p>
+            <p>8. Who helps Robinson after reaching the shore?</p>
             <div class="options">
-                <label><input type="radio" name="q8" value="a"> It was exciting</label>
-                <label><input type="radio" name="q8" value="b"> It was dangerous</label>
-                <label><input type="radio" name="q8" value="c"> It was fun</label>
-                <label><input type="radio" name="q8" value="d"> It was easy</label>
+                <label><input type="radio" name="q8" value="a"> Pirates (قزاق)</label>
+                <label><input type="radio" name="q8" value="b"> People from a village</label>
+                <label><input type="radio" name="q8" value="c"> His family</label>
+                <label><input type="radio" name="q8" value="d"> A navy crew</label>
             </div>
         </div>
         <div class="question">
-            <p>9. Where did the narrator go one year later?</p>
+            <p>9. Where does Robinson go after the rescue?</p>
             <div class="options">
-                <label><input type="radio" name="q9" value="a"> London</label>
-                <label><input type="radio" name="q9" value="b"> Hull</label>
-                <label><input type="radio" name="q9" value="c"> Germany</label>
+                <label><input type="radio" name="q9" value="a"> Hull</label>
+                <label><input type="radio" name="q9" value="b"> London</label>
+                <label><input type="radio" name="q9" value="c"> Africa</label>
                 <label><input type="radio" name="q9" value="d"> France</label>
             </div>
         </div>
         <div class="question">
-            <p>10. What was the date when the narrator visited Hull?</p>
+            <p>10. Who does Robinson meet in London?</p>
             <div class="options">
-                <label><input type="radio" name="q10" value="a"> 1st of September</label>
-                <label><input type="radio" name="q10" value="b"> 1st of October</label>
-                <label><input type="radio" name="q10" value="c"> 1st of August</label>
-                <label><input type="radio" name="q10" value="d"> 1st of July</label>
+                <label><input type="radio" name="q10" value="a"> A pirate (قزاق)</label>
+                <label><input type="radio" name="q10" value="b"> A captain</label>
+                <label><input type="radio" name="q10" value="c"> His father</label>
+                <label><input type="radio" name="q10" value="d"> A merchant</label>
             </div>
         </div>
         <div class="question">
-            <p>11. Who invited the narrator to travel by sea?</p>
+            <p>11. Where does the captain offer to travel with Robinson?</p>
             <div class="options">
-                <label><input type="radio" name="q11" value="a"> His father</label>
-                <label><input type="radio" name="q11" value="b"> His mother</label>
-                <label><input type="radio" name="q11" value="c"> His friend</label>
-                <label><input type="radio" name="q11" value="d"> His brother</label>
+                <label><input type="radio" name="q11" value="a"> Germany</label>
+                <label><input type="radio" name="q11" value="b"> France</label>
+                <label><input type="radio" name="q11" value="c"> Africa</label>
+                <label><input type="radio" name="q11" value="d"> Hull</label>
             </div>
         </div>
         <div class="question">
-            <p>12. Where was the narrator’s first sea journey to?</p>
+            <p>12. Why are the goods Robinson buys in England expensive in Africa?</p>
             <div class="options">
-                <label><input type="radio" name="q12" value="a"> Germany</label>
-                <label><input type="radio" name="q12" value="b"> France</label>
-                <label><input type="radio" name="q12" value="c"> London</label>
-                <label><input type="radio" name="q12" value="d"> Hull</label>
+                <label><input type="radio" name="q12" value="a"> They are heavy</label>
+                <label><input type="radio" name="q12" value="b"> Nobody makes them in Africa</label>
+                <label><input type="radio" name="q12" value="c"> They are rare in England</label>
+                <label><input type="radio" name="q12" value="d"> They are illegal</label>
             </div>
         </div>
         <div class="question">
-            <p>13. What happened during the narrator’s first hour at sea?</p>
+            <p>13. What does Robinson want to learn during his travels?</p>
             <div class="options">
-                <label><input type="radio" name="q13" value="a"> It was great</label>
-                <label><input type="radio" name="q13" value="b"> A storm came</label>
-                <label><input type="radio" name="q13" value="c"> He got sick</label>
-                <label><input type="radio" name="q13" value="d"> The ship sank</label>
+                <label><input type="radio" name="q13" value="a"> How to swim</label>
+                <label><input type="radio" name="q13" value="b"> How to control a ship (جہاز)</label>
+                <label><input type="radio" name="q13" value="c"> How to fight</label>
+                <label><input type="radio" name="q13" value="d"> How to trade</label>
             </div>
         </div>
         <div class="question">
-            <p>14. What did the man on the ship call the storm?</p>
+            <p>14. What happens during Robinson’s second journey to Africa?</p>
             <div class="options">
-                <label><input type="radio" name="q14" value="a"> A big storm</label>
-                <label><input type="radio" name="q14" value="b"> A little wind</label>
-                <label><input type="radio" name="q14" value="c"> A hurricane</label>
-                <label><input type="radio" name="q14" value="d"> A tornado</label>
+                <label><input type="radio" name="q14" value="a"> He buys a ship</label>
+                <label><input type="radio" name="q14" value="b"> Pirates (قزاق) attack</label>
+                <label><input type="radio" name="q14" value="c"> The ship sinks</label>
+                <label><input type="radio" name="q14" value="d"> He gets sick</label>
             </div>
         </div>
         <div class="question">
-            <p>15. How did the narrator feel during the second storm?</p>
+            <p>15. What is the outcome of the pirate (قزاق) attack?</p>
             <div class="options">
-                <label><input type="radio" name="q15" value="a"> Excited</label>
-                <label><input type="radio" name="q15" value="b"> Really scared</label>
-                <label><input type="radio" name="q15" value="c"> Happy</label>
-                <label><input type="radio" name="q15" value="d"> Tired</label>
+                <label><input type="radio" name="q15" value="a"> Robinson’s crew wins</label>
+                <label><input type="radio" name="q15" value="b"> The crew becomes prisoners</label>
+                <label><input type="radio" name="q15" value="c"> The pirates flee</label>
+                <label><input type="radio" name="q15" value="d"> The ship escapes</label>
             </div>
         </div>
         <h2>True/False Questions (16–30)</h2>
         <div class="question">
-            <p>16. The narrator's family had a lot of money.</p>
+            <p>16. Robinson is scared during the storm (طوفان).</p>
             <div class="options">
-                <label><input type="radio" name="q16" value="true"> True</label>
-                <label><input type="radio" name="q16" value="false"> False</label>
+                <label><input type="radio" name="q16" value="true"> True (سچ)</label>
+                <label><input type="radio" name="q16" value="false"> False (جھوٹ)</label>
             </div>
         </div>
         <div class="question">
-            <p>17. The narrator's father wanted him to travel by sea.</p>
+            <p>17. The waves during the storm (طوفان) are small.</p>
             <div class="options">
-                <label><input type="radio" name="q17" value="true"> True</label>
-                <label><input type="radio" name="q17" value="false"> False</label>
+                <label><input type="radio" name="q17" value="true"> True (سچ)</label>
+                <label><input type="radio" name="q17" value="false"> False (جھوٹ)</label>
             </div>
         </div>
         <div class="question">
-            <p>18. The narrator's mother supported his dream to travel by sea.</p>
+            <p>18. Everybody on the ship (جہاز) asks God for help during the storm (طوفان).</p>
             <div class="options">
-                <label><input type="radio" name="q18" value="true"> True</label>
-                <label><input type="radio" name="q18" value="false"> False</label>
+                <label><input type="radio" name="q18" value="true"> True (سچ)</label>
+                <label><input type="radio" name="q18" value="false"> False (جھوٹ)</label>
             </div>
         </div>
         <div class="question">
-            <p>19. The narrator visited Hull in 1651.</p>
+            <p>19. Robinson initially refuses to help pump water out of the ship (جہاز).</p>
             <div class="options">
-                <label><input type="radio" name="q19" value="true"> True</label>
-                <label><input type="radio" name="q19" value="false"> False</label>
+                <label><input type="radio" name="q19" value="true"> True (سچ)</label>
+                <label><input type="radio" name="q19" value="false"> False (جھوٹ)</label>
             </div>
         </div>
         <div class="question">
-            <p>20. The narrator's friend’s father owned a ship.</p>
+            <p>20. The ship (جہاز) is saved after pumping out the water.</p>
             <div class="options">
-                <label><input type="radio" name="q20" value="true"> True</label>
-                <label><input type="radio" name="q20" value="false"> False</label>
+                <label><input type="radio" name="q20" value="true"> True (سچ)</label>
+                <label><input type="radio" name="q20" value="false"> False (جھوٹ)</label>
             </div>
         </div>
         <div class="question">
-            <p>21. The narrator was well-prepared for his first sea journey.</p>
+            <p>21. The weather improves before the ship (جہاز) sinks.</p>
             <div class="options">
-                <label><input type="radio" name="q21" value="true"> True</label>
-                <label><input type="radio" name="q21" value="false"> False</label>
+                <label><input type="radio" name="q21" value="true"> True (سچ)</label>
+                <label><input type="radio" name="q21" value="false"> False (جھوٹ)</label>
             </div>
         </div>
         <div class="question">
-            <p>22. The first storm happened during the narrator’s first hour at sea.</p>
+            <p>22. The rescue boat (چھوٹی کشتی) returns to the other ship.</p>
             <div class="options">
-                <label><input type="radio" name="q22" value="true"> True</label>
-                <label><input type="radio" name="q22" value="false"> False</label>
+                <label><input type="radio" name="q22" value="true"> True (سچ)</label>
+                <label><input type="radio" name="q22" value="false"> False (جھوٹ)</label>
             </div>
         </div>
         <div class="question">
-            <p>23. The weather was nice after the first storm ended.</p>
+            <p>23. The ship (جہاز) sinks fifteen minutes after the crew is rescued.</p>
             <div class="options">
-                <label><input type="radio" name="q23" value="true"> True</label>
-                <label><input type="radio" name="q23" value="false"> False</label>
+                <label><input type="radio" name="q23" value="true"> True (سچ)</label>
+                <label><input type="radio" name="q23" value="false"> False (جھوٹ)</label>
             </div>
         </div>
         <div class="question">
-            <p>24. The narrator forgot about his home after drinking with a man on the ship.</p>
+            <p>24. People from a village give Robinson money (رقم).</p>
             <div class="options">
-                <label><input type="radio" name="q24" value="true"> True</label>
-                <label><input type="radio" name="q24" value="false"> False</label>
+                <label><input type="radio" name="q24" value="true"> True (سچ)</label>
+                <label><input type="radio" name="q24" value="false"> False (جھوٹ)</label>
             </div>
         </div>
         <div class="question">
-            <p>25. The second storm was smaller than the first one.</p>
+            <p>25. Robinson travels to London by sea (سمندری سفر).</p>
             <div class="options">
-                <label><input type="radio" name="q25" value="true"> True</label>
-                <label><input type="radio" name="q25" value="false"> False</label>
+                <label><input type="radio" name="q25" value="true"> True (سچ)</label>
+                <label><input type="radio" name="q25" value="false"> False (جھوٹ)</label>
             </div>
         </div>
         <div class="question">
-            <p>26. The narrator had a good education.</p>
+            <p>26. The captain in London teaches Robinson about business (تجارت) in Africa.</p>
             <div class="options">
-                <label><input type="radio" name="q26" value="true"> True</label>
-                <label><input type="radio" name="q26" value="false"> False</label>
+                <label><input type="radio" name="q26" value="true"> True (سچ)</label>
+                <label><input type="radio" name="q26" value="false"> False (جھوٹ)</label>
             </div>
         </div>
         <div class="question">
-            <p>27. The narrator’s father cried when talking about sea travel.</p>
+            <p>27. Robinson’s first journey to Africa is successful.</p>
             <div class="options">
-                <label><input type="radio" name="q27" value="true"> True</label>
-                <label><input type="radio" name="q27" value="false"> False</label>
+                <label><input type="radio" name="q27" value="true"> True (سچ)</label>
+                <label><input type="radio" name="q27" value="false"> False (جھوٹ)</label>
             </div>
         </div>
         <div class="question">
-            <p>28. The narrator stayed in London before his sea journey.</p>
+            <p>28. Robinson learns how to control a ship (جہاز) during his travels.</p>
             <div class="options">
-                <label><input type="radio" name="q28" value="true"> True</label>
-                <label><input type="radio" name="q28" value="false"> False</label>
+                <label><input type="radio" name="q28" value="true"> True (سچ)</label>
+                <label><input type="radio" name="q28" value="false"> False (جھوٹ)</label>
             </div>
         </div>
         <div class="question">
-            <p>29. The evening after the first storm was beautiful.</p>
+            <p>29. Pirates (قزاق) attack Robinson’s ship during his second journey to Africa.</p>
             <div class="options">
-                <label><input type="radio" name="q29" value="true"> True</label>
-                <label><input type="radio" name="q29" value="false"> False</label>
+                <label><input type="radio" name="q29" value="true"> True (سچ)</label>
+                <label><input type="radio" name="q29" value="false"> False (جھوٹ)</label>
             </div>
         </div>
         <div class="question">
-            <p>30. The narrator thought about his family during the second storm.</p>
+            <p>30. Some of Robinson’s men are killed during the pirate (قزاق) attack.</p>
             <div class="options">
-                <label><input type="radio" name="q30" value="true"> True</label>
-                <label><input type="radio" name="q30" value="false"> False</label>
+                <label><input type="radio" name="q30" value="true"> True (سچ)</label>
+                <label><input type="radio" name="q30" value="false"> False (جھوٹ)</label>
             </div>
         </div>
         <button type="button" onclick="checkAnswers()">Submit</button>
@@ -384,13 +345,13 @@
     <script>
         function checkAnswers() {
             const correctAnswers = {
-                q1: 'b', q2: 'b', q3: 'b', q4: 'b', q5: 'b',
-                q6: 'b', q7: 'c', q8: 'b', q9: 'b', q10: 'a',
-                q11: 'c', q12: 'c', q13: 'a', q14: 'b', q15: 'b',
-                q16: 'true', q17: 'false', q18: 'false', q19: 'true',
-                q20: 'true', q21: 'false', q22: 'false', q23: 'true',
+                q1: 'a', q2: 'b', q3: 'b', q4: 'b', q5: 'b',
+                q6: 'b', q7: 'b', q8: 'b', q9: 'b', q10: 'b',
+                q11: 'c', q12: 'b', q13: 'b', q14: 'b', q15: 'b',
+                q16: 'true', q17: 'false', q18: 'true', q19: 'true',
+                q20: 'false', q21: 'true', q22: 'false', q23: 'true',
                 q24: 'true', q25: 'false', q26: 'true', q27: 'true',
-                q28: 'false', q29: 'true', q30: 'false'
+                q28: 'true', q29: 'true', q30: 'true'
             };
             let score = 0;
             for (let i = 1; i <= 30; i++) {
